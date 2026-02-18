@@ -1,3 +1,4 @@
+//husk lib mappen skal være under src mappen!
 import { z } from "zod";
 
 export const loginSchema = z.object({
@@ -6,4 +7,6 @@ export const loginSchema = z.object({
 });
 
 
-//husk lib mappen skal være under src mappen!
+export const emailSchema = z.object({
+    email: z.email("Invalid email address.")
+});
