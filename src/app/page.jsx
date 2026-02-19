@@ -2,15 +2,18 @@ import Hero from "@/components/hero";
 import Newsletter from "@/components/newsletter";
 import TestimonialCarousel from "@/components/testimonialCarousel";
 import Image from "next/image";
+import { getAllTestimonials } from "@/lib/dal";
+import FormContact from "@/components/forms/formContact/FormContact";
 
+export default async function Home() {
 
-export default function Home() {
+  const testimonials = await getAllTestimonials();
 
   return (
     <>
 
       <Hero />
-      <main className="wrapper" >
+      <main className="wrapper">
 
         <h1 className="mt-8 pb-2">Vores holdtyper</h1>
 
@@ -45,14 +48,15 @@ export default function Home() {
           </figure>
           <p className="py-4 text-sm">Streetdance og hiphop er energifyldt træning med fokus på rytme, attitude og fællesskab. Vi arbejder med grooves, koreografier og grundtrin, der styrker kondition og koordination. Stemningen er uformel og motiverende, så motion og danseglæde går hånd i hånd.</p>
         </article>
-        <section>
-          <h3 className="mt-8 pb-2">Nyhedsbrev</h3>
-          <p>Få direkte besked når vi har sæsonstart eller afholder arrangementer.</p>
-          <Newsletter />
-        </section>
 
-        <TestimonialCarousel />
-      </main>
+        <Newsletter />
+
+
+      </main >
+
+      <TestimonialCarousel testimonials={testimonials} />
+      <FormContact />
+
     </>
 
   );
