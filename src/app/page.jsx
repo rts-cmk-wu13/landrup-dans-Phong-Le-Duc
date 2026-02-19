@@ -2,8 +2,12 @@ import Hero from "@/components/hero";
 import Newsletter from "@/components/newsletter";
 import TestimonialCarousel from "@/components/testimonialCarousel";
 import Image from "next/image";
-import { getAllTestimonials } from "@/lib/dal";
+import { getAllTestimonials } from "@/lib/dal/testimonials";
 import FormContact from "@/components/forms/formContact/FormContact";
+import FooterLanding from "@/components/footer/FooterLanding";
+
+
+
 
 export default async function Home() {
 
@@ -56,7 +60,7 @@ export default async function Home() {
 
       <TestimonialCarousel testimonials={testimonials} />
       <FormContact />
-
+      <FooterLanding />
     </>
 
   );

@@ -27,13 +27,15 @@ export const contactSchema = z.object({
 
 
 
-// export const registerSchema = z.object({
-//     username: z.string().min(2, "Navn skal være mindst 2 tegn langt"),
-//     email: z.string().min(1, "Email er påkrævet").email("Ugyldig email adresse"),
-//     password: z.string().min(6, "Adgangskode skal være mindst 6 tegn langt"),
-//     confirmPassword: z.string().min(6, "Bekræft adgangskode skal være mindst 6 tegn langt"),
-// }).refine((data) => data.password === data.confirmPassword, {
-//     path: ["custom"],
-//     message: "Adgangskoderne matcher ikke",
-// });
+export const registerSchema = z.object({
+    firstname: z.string().min(2, "Fornavn skal være mindst 2 tegn langt"),
+    lastname: z.string().min(2, "Efternavn skal være mindst 2 tegn langt"),
+    username: z.string().min(2, "Navn skal være mindst 2 tegn langt"),
+    age: z.coerce.number().min(1, "Alder er påkrævet"),
+    password: z.string().min(4, "Adgangskode skal være mindst 4 tegn langt"),
+    confirmPassword: z.string().min(4, "Bekræft adgangskode skal være mindst 4 tegn langt"),
+}).refine((data) => data.password === data.confirmPassword, {
+    path: ["custom"],
+    message: "Adgangskoderne matcher ikke",
+});
 
