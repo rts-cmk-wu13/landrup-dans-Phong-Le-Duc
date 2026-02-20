@@ -1,14 +1,11 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #003147;
   --foreground: #171717;
+  --secondary: #5A93AD;
 }
-
-
-
 
 @theme inline {
   --color-background: var(--background);
@@ -16,15 +13,11 @@
   --font-ubuntu: var(--font-ubuntu);
 }
 
-
-
 body {
   background: var(--background);
   color: #fff;
   font-family: var(--font-ubuntu);
 }
-
-
 
 /* heading styles */
 h1 {
@@ -55,11 +48,17 @@ h4 {
   line-height: 1.35;
 }
 
-
 .wrapper {
   padding: 1rem;
 }
 
+.footer-sticky {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 50;
+}
 
 /* animations */
 .fade {

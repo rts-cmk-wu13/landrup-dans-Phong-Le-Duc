@@ -21,7 +21,10 @@ export default function ActivityCard({ activity }) {
                 )}
                 <div className="absolute bottom-0 left-0 w-full h-16 bg-blue-900/50 rounded-tr-4xl rounded-bl-4xl px-4 py-2">
                     <p className="font-bold" id={`activity-card-${activity.id}`}>{activity.name}</p>
-                    <p className="text-xs">{activity.minAge} - {activity.maxAge} år</p>
+                    <p className="text-xs">
+                        {activity.minAge}
+                        {activity.maxAge === 100 ? '+' : ` - ${activity.maxAge}`} år
+                    </p>
                 </div>
             </article>
         </Link>

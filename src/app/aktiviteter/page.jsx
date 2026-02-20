@@ -2,6 +2,9 @@
 import ActivityCard from "@/components/activityCard";
 import { notFound } from "next/navigation";
 import { getAllActivities } from "@/lib/dal/activity";
+import Footer from "@/components/footer/Footer";
+import SearchBar from "@/components/search";
+
 
 
 export default async function Page() {
@@ -18,15 +21,20 @@ export default async function Page() {
 
 
     return (
-        <main className="wrapper">
+        <>
+            <SearchBar />
+            <main className="wrapper min-h-screen">
 
-            <h1 className="mb-4">Aktiviteter</h1>
+                <h1 className="mb-4">Aktiviteter</h1>
 
-            {activities.data.map(activity => (
-                <ActivityCard activity={activity} key={activity.id} />
-            ))}
-        </main>
+                {activities.data.map(activity => (
+                    <ActivityCard activity={activity} key={activity.id} />
+                ))}
+            </main>
 
+            <Footer className="w-full fixed bottom-0 left-0 z-50" />
+
+        </>
 
 
     )
