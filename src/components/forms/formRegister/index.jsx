@@ -26,12 +26,11 @@ export default function FormRegister() {
             const { confirmPassword, ...userWithoutConfirm } = result.data;
 
             const response = await registerUser(userWithoutConfirm);
-            const userdata = await response.json();
 
             if (!response.ok) {
-                setErrors({ form: { errors: [userdata.message || userdata.error || "Please fill out all fields"] } });
+                setErrors({ form: { errors: [response.data.message || response.data.error || "Please fill out all fields"] } });
             } else {
-                router.replace("/");
+                router.replace("/user-kalender");
             }
         }
     }

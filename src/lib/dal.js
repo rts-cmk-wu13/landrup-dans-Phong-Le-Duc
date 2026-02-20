@@ -27,30 +27,7 @@ export async function getAllEvents() {
 
 
 
-export async function getAllBlogPosts() {
-    try {
-        const res = await fetch("http://localhost:4000/posts");
-        if (!res.ok) {
-            throw new Error({ message: "Something went wrong" })
-        }
 
-        if (res.status !== 200) {
-            throw new Error({ message: res.statusText });
-        }
-
-        if (res.headers.get("content-type") === "application/json") {
-            return await res.json();
-        }
-
-        throw new Error({ message: "Not JSON" });
-    } catch (error) {
-        console.log("getAllBlogPosts error:", error);
-        return {
-            success: false,
-            message: "something went wrong on the server, try again later",
-        }
-    }
-}
 
 
 

@@ -18,7 +18,13 @@ export async function registerUser(data) {
             body,
         });
 
-        return response;
+        const responseData = await response.json();
+
+        return {
+            ok: response.ok,
+            status: response.status,
+            data: responseData,
+        };
     } catch (error) {
         console.error("Error submitting register request:", error);
         throw error;
