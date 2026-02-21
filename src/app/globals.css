@@ -73,3 +73,7 @@ h4 {
         opacity: 1;
     }
 }
+
+input:focus {
+    outline: none;
+}
