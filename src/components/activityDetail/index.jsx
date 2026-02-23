@@ -20,7 +20,7 @@ export default function ActivityDetail({ activity }) {
                     )}
 
                     <div className="absolute bottom-10 right-8">
-                        <JoinCourseBtn />
+                        <JoinCourseBtn activityId={activity.id} />
                     </div>
 
                 </div>

@@ -57,3 +57,49 @@ export async function getActivityById(id) {
         };
     }
 }
+
+export async function addUserActivity(userId, activityId, token) {
+    if (!userId) throw new Error("Missing userId");
+    if (!activityId) throw new Error("Missing activityId");
+    if (!token) throw new Error("Missing token");
+
+    const res = await fetch(
+        `http://localhost:4000/api/v1/users/${userId}/activities/${activityId}`,
+        {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        }
+    );
+
+    if (!res.ok) {
+        throw new Error(await res.text());
+    }
+
+    return res.json();
+}
+
+
+
+export async function getUserActivities(userId, token) {
+    if (!userId) throw new Error("Missing userId");
+    if (!token) throw new Error("Missing token");
+
+    const res = await fetch(`http://localhost:4000/api/v1/users/${userId}/activities`, {
+        headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (!res.ok) {
+        const body = await res.text();
+        throw new Error(`Status ${res.status}: ${body}`);
+    }
+
+    const contentType = res.headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+        return { data: await res.json() };
+    }
+
+    throw new Error("Not JSON");
+}

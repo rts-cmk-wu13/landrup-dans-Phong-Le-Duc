@@ -46,10 +46,11 @@ export async function loginUser(prevState, formData) {
     cookieStore.set("username", username)
     cookieStore.set("role", response.data.role)
 
-    if (response.data.role === "instructor") {
-        return redirect("/instructor-kalender")
+    return {
+        success: true,
+        user: response.data,
+        token: response.data.token,
+        values: { username, password }
     }
-
-    return redirect("/user-kalender")
 
 }

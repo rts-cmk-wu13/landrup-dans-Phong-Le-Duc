@@ -21,9 +21,7 @@ function SearchResults({ searchTerm }) {
 
     return (
         <div>
-            {results.map(activity => (
-                <div key={activity.id}>{activity.name}</div>
-            ))}
+
         </div>
     );
 }

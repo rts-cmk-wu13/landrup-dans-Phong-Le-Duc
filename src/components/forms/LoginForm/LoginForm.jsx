@@ -1,7 +1,10 @@
 "use client";
 import { useActionState } from "react";
 import { loginUser } from "./login-action";
-
+import { AuthContext } from "@/context/AuthContext";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { useRouter } from "next/navigation";
 
 const initialState = {
     values: {
@@ -15,7 +18,17 @@ const initialState = {
 export default function LoginForm() {
 
     const [state, formAction, isPending] = useActionState(loginUser, initialState)
+    const { setAuthData } = useContext(AuthContext);
+    const router = useRouter();
     console.log(state);
+    useEffect(() => {
+        if (state.success && state.user && state.token) {
+            console.log("😍state.user:", state.user);
+            setAuthData({ userId: state.user.userId, token: state.token });
+            router.push("/user-kalender");
+        }
+    }, [state.success, state.user, state.token, setAuthData, router]);
+
     return (
 
 
@@ -47,6 +60,15 @@ export default function LoginForm() {
                 <button type="submit" disabled={isPending} className="bg-blue-300 p-2 w-1/2 mx-auto rounded-md disabled:bg-gray-400" style={{ boxShadow: "0 8px 24px 0 rgba(0,0,0,0.5)" }} >{isPending ? "Logging in..." : "Log ind"}</button>
 
             </form>
+
+            {state.success && (
+                <div>
+                    <p>Logget ind!</p>
+                    <button type="button" onClick={() => setAuthData(state.user, state.token)}>
+                        Vis brugerdata
+                    </button>
+                </div>
+            )}
         </section>
     )
 }
