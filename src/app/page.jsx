@@ -22,7 +22,7 @@ export default async function Home() {
         <h1 className="mt-8 pb-2">Vores holdtyper</h1>
 
         <article>
-          <h4 className="mt-8 pb-2">Børnehold</h4>
+          <h4 className="mt-4 pb-2">Børnehold</h4>
           <figure>
             <Image src="/assets/boernedans.jpg" alt="Børnehold" width={600} height={400} />
           </figure>

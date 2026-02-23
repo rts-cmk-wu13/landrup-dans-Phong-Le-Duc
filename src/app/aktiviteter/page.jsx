@@ -3,7 +3,8 @@ import ActivityCard from "@/components/activityCard";
 import { notFound } from "next/navigation";
 import { getAllActivities } from "@/lib/dal/activity";
 import Footer from "@/components/footer/Footer";
-import SearchBar from "@/components/search";
+import SearchContainer from "@/components/search/SearchContainer";
+
 
 
 
@@ -22,7 +23,7 @@ export default async function Page() {
 
     return (
         <>
-            <SearchBar />
+            <SearchContainer />
             <main className="wrapper min-h-screen">
 
                 <h1 className="mb-4">Aktiviteter</h1>

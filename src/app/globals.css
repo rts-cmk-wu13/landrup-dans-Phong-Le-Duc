@@ -22,34 +22,34 @@ body {
 /* heading styles */
 h1 {
   font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+  font-weight: 100;
+  /* margin-bottom: 1rem; */
+  line-height: 1;
 }
 
 h2 {
   font-size: 1.75rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  /* margin-bottom: 0.75rem; */
   line-height: 1.25;
 }
 
 h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
   line-height: 1.3;
 }
 
 h4 {
   font-size: 1.2rem;
   font-weight: 500;
-  margin-bottom: 0.25rem;
+  /* margin-bottom: 0.25rem; */
   line-height: 1.35;
 }
 
 .wrapper {
-  padding: 1rem;
+  padding-inline: 1rem;
 }
 
 .footer-sticky {
@@ -74,6 +74,6 @@ h4 {
     }
 }
 
-input:focus {
+/* input:focus {
     outline: none;
-}
+} */
