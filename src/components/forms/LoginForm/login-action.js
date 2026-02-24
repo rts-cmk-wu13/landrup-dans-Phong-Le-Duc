@@ -1,8 +1,6 @@
 "use server"
 import { z } from "zod"
 import { cookies } from "next/headers"
-import { redirect } from "next/navigation"
-import { revalidatePath } from "next/cache"
 import { login } from "@/lib/dal/login"
 
 const loginSchema = z.object({
@@ -18,7 +16,7 @@ export async function loginUser(prevState, formData) {
 
 
     if (username === prevState.values.username && password === prevState.values.password) {
-        return prevState // no change
+        return prevState
     }
 
     const result = loginSchema.safeParse({ username, password })
@@ -41,6 +39,7 @@ export async function loginUser(prevState, formData) {
     }
 
     console.log(response.data)
+    console.log("role from /auth/token:", response.data.role)
 
     cookieStore.set("token", response.data.token)
     cookieStore.set("username", username)

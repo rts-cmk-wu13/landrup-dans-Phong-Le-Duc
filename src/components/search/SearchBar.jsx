@@ -21,7 +21,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
     return (
         <form
             className="relative max-w-md mx-auto p-4 rounded"
-            style={{ minHeight: "73px" }} // Adjust height as needed
+            style={{ minHeight: "73px" }}
 
             onSubmit={async e => {
                 e.preventDefault();
@@ -30,7 +30,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
                 const response = await searchActivities(inputValue);
                 const activities = response.data || [];
 
-                // Filter on the frontend
+
                 const query = inputValue.toLowerCase();
                 const match = activities.find(
                     activity =>

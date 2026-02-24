@@ -17,7 +17,7 @@ export default async function page({ params }) {
 
     return (
         <>
-            <main>
+            <main className="mb-24">
                 <ActivityDetail activity={activityResult.data} />
             </main>
             <Footer />

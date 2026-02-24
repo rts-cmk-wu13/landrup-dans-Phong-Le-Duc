@@ -1,6 +1,5 @@
 import JoinCourseBtn from "../buttons/joinCourseBtn";
 
-
 export default function ActivityDetail({ activity }) {
 
     if (!activity) return null
@@ -20,7 +19,7 @@ export default function ActivityDetail({ activity }) {
                     )}
 
                     <div className="absolute bottom-10 right-8">
-                        <JoinCourseBtn activityId={activity.id} />
+                        <JoinCourseBtn activityId={activity.id} minAge={activity.minAge} maxAge={activity.maxAge} />
                     </div>
 
                 </div>

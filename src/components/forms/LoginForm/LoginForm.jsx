@@ -22,8 +22,8 @@ export default function LoginForm() {
     const router = useRouter();
     console.log(state);
     useEffect(() => {
+        console.log("login success:", state.success);
         if (state.success && state.user && state.token) {
-            // Decode JWT to get firstname and lastname
             const decoded = JSON.parse(atob(state.token.split('.')[1]));
 
             setAuthData({
@@ -32,9 +32,11 @@ export default function LoginForm() {
                 username: decoded.data.username,
                 firstname: decoded.data.firstname,
                 lastname: decoded.data.lastname,
+                age: decoded.data.age,
                 role: state.user.role
             });
-            router.push("/user-kalender");
+            console.log("role for redirect:", state.user?.role);
+            router.push(state.user?.role === "instructor" ? "/instructor-kalender" : "/user-kalender");
         }
     }, [state.success, state.user, state.token, setAuthData, router]);
 
@@ -70,14 +72,6 @@ export default function LoginForm() {
 
             </form>
 
-            {state.success && (
-                <div>
-                    <p>Logget ind!</p>
-                    <button type="button" onClick={() => setAuthData(state.user, state.token)}>
-                        Vis brugerdata
-                    </button>
-                </div>
-            )}
         </section>
     )
 }

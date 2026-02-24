@@ -24,7 +24,7 @@ export default async function Page() {
     return (
         <>
             <SearchContainer />
-            <main className="wrapper min-h-screen">
+            <main className="wrapper min-h-screen mb-24">
 
                 <h1 className="mb-4">Aktiviteter</h1>
 

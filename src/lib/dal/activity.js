@@ -36,7 +36,6 @@ export async function getActivityById(id) {
 
         const res = await fetch(`http://localhost:4000/api/v1/activities/${id}`);
         if (!res.ok) {
-            // If your API returns 404 for not found, handle it here
             if (res.status === 404) {
                 return { data: null };
             }
@@ -125,3 +124,14 @@ export async function getUserActivities(userId, token) {
     throw new Error("Not JSON");
 }
 
+
+
+export async function createActivity(activityData) {
+    const res = await fetch("http://localhost:4000/api/v1/activities", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(activityData),
+    });
+    const data = await res.json();
+    return { ok: res.ok, data };
+}

@@ -3,7 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { addUserActivity, deleteUserActivity, getUserActivities } from "@/lib/dal/activity";
 import { AuthContext } from "@/context/AuthContext";
 
-export default function JoinCourseBtn({ activityId }) {
+export default function JoinCourseBtn({ activityId, minAge, maxAge }) {
     const { authData } = useContext(AuthContext);
     const [isEnrolled, setIsEnrolled] = useState(false);
 
@@ -23,19 +23,29 @@ export default function JoinCourseBtn({ activityId }) {
 
     const handleToggle = async () => {
         if (!authData) {
-            console.log("😢User not logged in");
+            alert("Du skal være logget ind for at tilmelde dig.");
+            return;
+        }
+
+        // Alder-tjek før tilmelding
+        const userAge = Number(authData.age);
+        if (
+            !isNaN(userAge) &&
+            (userAge < Number(minAge) || userAge > Number(maxAge))
+        ) {
+            alert("Din alder egner sig ikke til denne aktivitet.");
             return;
         }
 
         try {
             if (isEnrolled) {
+                const confirmUnenroll = window.confirm("Er du sikker på, at du vil afmelde?");
+                if (!confirmUnenroll) return;
                 await deleteUserActivity(authData.userId, activityId, authData.token);
                 setIsEnrolled(false);
-                console.log("✅ Activity removed!");
             } else {
                 await addUserActivity(authData.userId, activityId, authData.token);
                 setIsEnrolled(true);
-                console.log("✅ Activity added!");
             }
         } catch (error) {
             console.error("❌ Error:", error);

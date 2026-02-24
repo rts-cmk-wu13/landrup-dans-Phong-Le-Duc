@@ -4,12 +4,6 @@ import { z } from "zod";
 
 
 
-// export const loginSchema = z.object({
-//     email: z.email("Invalid email address."),
-//     password: z.string().min(6, "Password must be at least 6 characters long.")
-// });
-
-
 export const emailSchema = z.object({
     email: z.email("Invalid email address.")
 });
@@ -39,3 +33,14 @@ export const registerSchema = z.object({
     message: "Adgangskoderne matcher ikke",
 });
 
+
+export const createActivitySchema = z.object({
+    name: z.string().min(2, "Navn skal være mindst 2 tegn langt"),
+    description: z.string().min(10, "Beskrivelse skal være mindst 10 tegn langt"),
+    weekday: z.enum(["mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag", "søndag"], "Vælg en gyldig ugedag"),
+    time: z.string().min(1, "Tidspunkt er påkrævet"),
+    minAge: z.coerce.number().min(1, "Minimumsalder skal være mindst 1 år"),
+    maxAge: z.coerce.number().min(1, "Maximumsalder skal være mindst 1 år"),
+    instructor: z.string().min(2, "Instruktørnavn skal være mindst 2 tegn langt"),
+    maxParticipants: z.coerce.number().min(1, "Max antal deltagere skal være mindst 1"),
+});

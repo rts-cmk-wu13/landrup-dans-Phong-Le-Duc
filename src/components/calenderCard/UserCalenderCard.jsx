@@ -4,6 +4,8 @@ import { deleteUserActivity } from "@/lib/dal/activity";
 export function UserCalenderCard({ activity, userId, token, onDelete }) {
 
     const handleDelete = async () => {
+        const confirmUnenroll = window.confirm("Er du sikker på, at du vil afmelde?");
+        if (!confirmUnenroll) return;
         try {
             await deleteUserActivity(userId, activity.id, token);
             console.log("✅ Activity deleted!");
