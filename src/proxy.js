@@ -13,5 +13,11 @@ export function proxy(request) {
 // export default function proxy(request) { ... }
 
 export const config = {
-    matcher: ['/secret/:path*', '/events/:path*'],
+    matcher: [
+        '/user-kalender/:path*',
+        '/aktiviteter/:path*',
+        '/opret-bruger/:path*',
+        '/instructor-kalender/:path*',
+        '/profile/:path*'
+    ],
 }

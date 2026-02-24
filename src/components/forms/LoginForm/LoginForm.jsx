@@ -23,8 +23,17 @@ export default function LoginForm() {
     console.log(state);
     useEffect(() => {
         if (state.success && state.user && state.token) {
-            console.log("😍state.user:", state.user);
-            setAuthData({ userId: state.user.userId, token: state.token });
+            // Decode JWT to get firstname and lastname
+            const decoded = JSON.parse(atob(state.token.split('.')[1]));
+
+            setAuthData({
+                userId: state.user.userId,
+                token: state.token,
+                username: decoded.data.username,
+                firstname: decoded.data.firstname,
+                lastname: decoded.data.lastname,
+                role: state.user.role
+            });
             router.push("/user-kalender");
         }
     }, [state.success, state.user, state.token, setAuthData, router]);

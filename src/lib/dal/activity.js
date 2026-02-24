@@ -81,7 +81,28 @@ export async function addUserActivity(userId, activityId, token) {
     return res.json();
 }
 
+export async function deleteUserActivity(userId, activityId, token) {
+    if (!userId) throw new Error("Missing userId");
+    if (!activityId) throw new Error("Missing activityId");
+    if (!token) throw new Error("Missing token");
 
+    const res = await fetch(
+        `http://localhost:4000/api/v1/users/${userId}/activities/${activityId}`,
+        {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        }
+    );
+
+    if (!res.ok) {
+        throw new Error(await res.text());
+    }
+
+    return { success: true };
+}
 
 export async function getUserActivities(userId, token) {
     if (!userId) throw new Error("Missing userId");
@@ -103,3 +124,4 @@ export async function getUserActivities(userId, token) {
 
     throw new Error("Not JSON");
 }
+

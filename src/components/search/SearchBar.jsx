@@ -41,7 +41,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
                 if (match) {
                     router.push(`/aktiviteter/${match.id}`);
                 } else {
-                    alert("No matching activity found.");
+                    alert("Der blev ikke fundet nogle aktiviteter. Prøv at søge efter noget andet.");
                 }
             }}
         >
