@@ -14,9 +14,7 @@ export const config = {
         '/aktiviteter/:path*',
         '/instructor-kalender/:path*',
         '/profile/:path*',
-        '/user-kalender/:path*',
         '/opret-hold/:path*',
-
-
+        '/user-kalender/:path*',
     ],
 }

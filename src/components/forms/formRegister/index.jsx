@@ -30,7 +30,7 @@ export default function FormRegister() {
             if (!response.ok) {
                 setErrors({ form: { errors: [response.data.message || response.data.error || "Please fill out all fields"] } });
             } else {
-                router.replace("/user-kalender");
+                router.replace("/login");
             }
         }
     }
