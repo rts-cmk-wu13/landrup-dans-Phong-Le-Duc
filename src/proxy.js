@@ -13,7 +13,6 @@ export const config = {
     matcher: [
         '/user-kalender/:path*',
         '/aktiviteter/:path*',
-        '/opret-bruger/:path*',
         '/instructor-kalender/:path*',
         '/profile/:path*'
     ],
