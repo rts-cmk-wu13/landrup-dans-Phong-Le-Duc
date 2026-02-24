@@ -11,9 +11,12 @@ export function proxy(request) {
 
 export const config = {
     matcher: [
-        '/user-kalender/:path*',
         '/aktiviteter/:path*',
         '/instructor-kalender/:path*',
-        '/profile/:path*'
+        '/profile/:path*',
+        '/user-kalender/:path*',
+        '/opret-hold/:path*',
+
+
     ],
 }

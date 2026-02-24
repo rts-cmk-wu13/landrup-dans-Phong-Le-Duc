@@ -10,7 +10,7 @@ export default function ActivityCard({ activity }) {
             aria-labelledby={`activity-card-${activity.id}`}
         >
             <article className="relative mb-4">
-                // ...existing code...
+
                 {activity.asset?.url && (
                     <img
                         src={activity.asset.url}
