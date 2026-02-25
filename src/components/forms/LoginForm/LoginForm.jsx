@@ -21,6 +21,7 @@ export default function LoginForm() {
     const { setAuthData } = useContext(AuthContext);
     const router = useRouter();
     console.log(state);
+
     useEffect(() => {
         console.log("login success:", state.success);
         if (state.success && state.user && state.token) {
